@@ -1,0 +1,23 @@
+
+.site-header {
+	background: rgba(#f0f0f0, 0.5);
+	position:   absolute;
+	top:        50%;
+	text-align: center;
+	@include transform(translateY(-50%));
+	width:      100%;
+	z-index:    10;
+
+	h1 {
+		color:          $color-blue;
+		font-family:    Slukoni;
+		font-size:      4em;
+		line-height:    1;
+		margin:         0;
+		text-transform: uppercase;
+	}
+
+	p {
+		margin: 0;
+	}
+}
