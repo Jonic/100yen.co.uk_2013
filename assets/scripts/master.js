@@ -7,19 +7,21 @@ if ('querySelector' in document && 'localStorage' in window && 'addEventListener
 
 var canvas          = document.getElementById('dots');
 var context         = canvas.getContext('2d');
-var maxParticles    = 1000;
+var maxVelocity     = 10;
 var particlesArray  = [];
+var particlesIds    = [];
 var particlesOrigin = {
 	x: 0,
 	y: 0
 };
 
 var Particle = function () {
-	var self = this;
-
-	this.color = randomColor();
-	this.size = Math.round(random(50));
-	this.half = Math.round(this.size / 2);
+	this.id        = Math.random().toString(36).substr(2, 5);
+	this.alpha     = random(0.75, 1);
+	this.rgb       = randomColor();
+	this.size      = Math.round(random(50));
+	this.half      = Math.round(this.size / 2);
+	this.colorStop = this.size / 40;
 
 	this.position = {
 		x: particlesOrigin.x - this.half,
@@ -27,8 +29,8 @@ var Particle = function () {
 	};
 
 	this.velocity = {
-		x: random(0, 10) - 5,
-		y: random(0, 10) - 5
+		x: random(0, maxVelocity) - (maxVelocity / 2),
+		y: random(0, maxVelocity) - (maxVelocity / 2)
 	};
 };
 
@@ -38,10 +40,21 @@ Particle.prototype.updateValues = function () {
 };
 
 Particle.prototype.draw = function () {
-	if (this.withinCanvasBounds()) {
-		context.fillStyle = this.color;
+	var rgb = this.rgb.r + ', ' + this.rgb.g + ', ' + this.rgb.b;
+
+	if (this.colorStop < 1) {
+		var radgrad = context.createRadialGradient(this.position.x + this.half, this.position.y + this.half, 0, this.position.x + this.half, this.position.y + this.half, this.half);
+
+		radgrad.addColorStop(0,              'rgba(' + rgb + ', ' + this.alpha + ')');
+		radgrad.addColorStop(this.colorStop, 'rgba(' + rgb + ', ' + this.alpha + ')');
+		radgrad.addColorStop(1,              'rgba(' + rgb + ', 0)');
+
+		context.fillStyle = radgrad;
+		context.fillRect(this.position.x, this.position.y, this.size, this.size);
+	} else {
+		context.fillStyle = 'rgba(' + rgb + ', ' + this.alpha + ')';
 		context.beginPath();
-		context.arc(this.position.x, this.position.y, this.half, 0, Math.PI * 2, true);
+		context.arc(this.position.x, this.position.y, this.half, 0, 2 * Math.PI, true);
 		context.closePath();
 		context.fill();
 	}
@@ -66,26 +79,44 @@ Particle.prototype.withinCanvasBounds = function () {
 };
 
 function addParticle() {
-	var newParticle = new Particle();
+	var particle = new Particle();
 
-	particlesArray.unshift(newParticle);
-
-	if (particlesArray.length > maxParticles) {
-		particlesArray.length = maxParticles;
-	}
+	particlesArray.push(particle);
+	particlesIds.push(particle.id);
 }
 
 function animationLoop() {
 	window.requestAnimationFrame(animationLoop);
 
+	var particle;
+	var particlesToDelete = [];
+
 	context.clearRect(0, 0, canvas.width, canvas.height);
 
-	var particle;
+	for (var i = 0, n = particlesArray.length; i < n; i += 1) {
+		particle = particlesArray[i];
 
-	for (var _i = 0, _len = particlesArray.length; _i < _len; _i += 1) {
-		particle = particlesArray[_i];
-		particle.updateValues();
-		particle.draw();
+		if (particle.withinCanvasBounds()) {
+			particle.updateValues();
+			particle.draw();
+		} else {
+			particlesToDelete.push(particle.id);
+		}
+	}
+
+	destroyParticlesOutsideCanvasBounds(particlesToDelete);
+}
+
+function destroyParticlesOutsideCanvasBounds(particlesToDelete) {
+	for (var i = 0, n = particlesToDelete.length; i < n; i += 1) {
+		var id       = particlesToDelete[i];
+		var index    = particlesIds.indexOf(id);
+		var particle = particlesArray[index];
+
+		if (particle) {
+			particlesArray.splice(index, 1);
+			particlesIds.splice(index, 1);
+		}
 	}
 }
 
@@ -101,17 +132,12 @@ function random(min, max) {
 	return (Math.random() * (max - min)) + min;
 }
 
-function randomColor(alpha) {
-
-	var colors = {
+function randomColor() {
+	return {
 		r: randomInteger(0, 200),
 		g: randomInteger(0, 200),
 		b: randomInteger(0, 200)
 	};
-
-	colors.a = alpha ? alpha : random(0.75, 1);
-
-	return 'rgba(' + colors.r + ', ' + colors.g + ', ' + colors.b + ', ' + colors.a + ')';
 }
 
 function randomInteger(min, max) {
@@ -135,9 +161,9 @@ function updateParticlesOrigin(event) {
 canvas.width  = document.body.clientWidth;
 canvas.height = document.body.clientHeight;
 
-var devicePixelRatio = window.devicePixelRatio || 1;
+var devicePixelRatio  = window.devicePixelRatio || 1;
 var backingStoreRatio = context.webkitBackingStorePixelRatio || context.backingStorePixelRatio || 1;
-var ratio = devicePixelRatio / backingStoreRatio;
+var ratio             = devicePixelRatio / backingStoreRatio;
 
 if (devicePixelRatio !== backingStoreRatio) {
 	var oldWidth  = canvas.width;

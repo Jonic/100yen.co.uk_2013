@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  color: #777777;
+  color: #444444;
   font-family: "Lato", sans-serif;
   font-size: 22px;
   font-weight: 400;
@@ -413,14 +413,14 @@ header:after, main:after, ol:after, section:after, nav:after, ul:after {
 }
 
 .social-link {
-  color: #777777;
+  color: #444444;
   text-decoration: none;
 }
 .social-link:hover {
   color: #3c8fc7;
 }
 .social-link:visited {
-  color: #777777;
+  color: #444444;
 }
 .social-link:visited:hover {
   color: #3c8fc7;
