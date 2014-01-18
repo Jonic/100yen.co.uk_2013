@@ -48,7 +48,6 @@ a {
   color: #3c8fc7;
   cursor: pointer;
   text-decoration: underline;
-  transition: color 100ms ease-in-out;
 }
 a:active, a:focus, a:hover {
   color: #2e73a2;
@@ -341,6 +340,28 @@ header:after, main:after, ol:after, section:after, nav:after, ul:after {
   top: 0;
   width: 100%;
   z-index: 5;
+}
+
+.hire-button {
+  background: #27ae60;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
+  margin: 0.5em 0;
+  padding: 0 1em;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.hire-button:hover {
+  background: #36d278;
+  color: #fff;
+}
+.hire-button:active {
+  color: #fff;
+  position: relative;
+  top: 1px;
 }
 
 .site-footer {
