@@ -23,6 +23,8 @@ var Particle = function () {
 	this.half      = Math.round(this.size / 2);
 	this.colorStop = this.size / 40;
 
+	this.colorStop = 1;
+
 	this.position = {
 		x: particlesOrigin.x - this.half,
 		y: particlesOrigin.y - this.half
@@ -81,8 +83,8 @@ Particle.prototype.withinCanvasBounds = function () {
 function addParticle() {
 	var particle = new Particle();
 
-	particlesArray.push(particle);
-	particlesIds.push(particle.id);
+	particlesArray.unshift(particle);
+	particlesIds.unshift(particle.id);
 }
 
 function animationLoop() {
