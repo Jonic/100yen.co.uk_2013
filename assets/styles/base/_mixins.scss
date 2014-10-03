@@ -31,6 +31,9 @@
 
 //	http://thesassway.com/intermediate/responsive-web-design-in-sass-using-media-queries-in-sass-32#variables_in_queries_using_content
 @mixin respond-to($media) {
+	$measurement: max-width;
+	$value:       $break-narrow;
+
 	@if $media == tiny {
 		$measurement: max-width;
 		$value:       $break-narrow;
