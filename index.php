@@ -1,6 +1,27 @@
+<?php
+
+//  ERRORZ
+	ini_set('display_errors', TRUE);
+	error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
+
+//  Turn on Zlib output compression - regular OB fallback if not supported
+	if (!ob_start('ob_gzhandler')) {
+		ob_start();
+	}
+
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 	<head>
+<!--
+     _  ___   ___                    _       _
+    / |/ _ \ / _ \    __ _  ___   __| |   __| | __ _ _ __ ___  _ __    _   _  ___ _ __
+    | | | | | | | |  / _` |/ _ \ / _` |  / _` |/ _` | '_ ` _ \| '_ \  | | | |/ _ \ '_ \
+    | | |_| | |_| | | (_| | (_) | (_| | | (_| | (_| | | | | | | | | | | |_| |  __/ | | |
+    |_|\___/ \___/   \__, |\___/ \__,_|  \__,_|\__,_|_| |_| |_|_| |_|  \__, |\___|_| |_|
+                      |___/                                             |___/
+-->
+
 		<meta charset="utf-8" />
 
 		<title>100yen. Website design and development for cool people by Jonic Linley.</title>
@@ -14,6 +35,8 @@
 		<link rel="apple-touch-icon-precomposed" href="/public/images/icons/apple-touch-icon.png" />
 		<link rel="shortcut icon" href="/public/images/icons/favicon.ico" />
 	</head>
+
+	<?php ob_flush() ?>
 
 	<body>
 		<header class="site-header" role="banner">
@@ -54,3 +77,7 @@
 		</script>
 	</body>
 </html>
+<?php
+
+	//  Flush and return output buffer
+	while (@ob_end_flush());
