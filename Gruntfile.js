@@ -29,8 +29,7 @@ module.exports = function (grunt) {
 		sass: {
 			options: {
 				banner: '<%= tag.banner %>',
-				noCache: true,
-				require: 'sass-globbing'
+				noCache: true
 			},
 			dev: {
 				files: {
