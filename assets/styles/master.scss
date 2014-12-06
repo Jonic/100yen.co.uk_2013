@@ -2,12 +2,7 @@
 @charset "UTF-8";
 
 //	Config variables
-@import 'config';
-
-
-
-/* Application styles
-*/
+@import '_config';
 
 //	Base dependencies
 @import 'base/_01-fonts';
@@ -17,4 +12,8 @@
 @import 'base/_05-defaults';
 
 //	Modules
-@import 'modules/**/*';
+@import 'modules/_bg-canvas';
+@import 'modules/_hire-button';
+@import 'modules/_site-footer';
+@import 'modules/_site-header';
+@import 'modules/_social-list';
