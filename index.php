@@ -29,9 +29,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="p:domain_verify" content="3326370413a8d08eb9f47fb7a6302557">
 
-		<link href="/public/styles/master.min.css" rel="stylesheet" type="text/css">
-
 		<script src="/public/vendor/html5shiv/dist/html5shiv.js" type="application/javascript"></script>
+
+		<link href="/public/styles/master.min.css" rel="stylesheet" type="text/css">
 
 		<link rel="apple-touch-icon-precomposed" href="/public/images/icons/apple-touch-icon.png">
 		<link rel="shortcut icon" href="/public/images/icons/favicon.ico">
