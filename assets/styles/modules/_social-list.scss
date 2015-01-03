@@ -21,12 +21,12 @@
 			text-indent:     -10000px;
 			width:           30px;
 
-			&.social-link-twitter    { background-position: 0px    center; }
-			&.social-link-tumblr     { background-position: -30px  center; }
-			&.social-link-github     { background-position: -60px  center; }
-			&.social-link-instagram  { background-position: -90px  center; }
-			&.social-link-dribbble   { background-position: -120px center; }
-			&.social-link-soundcloud { background-position: -150px center; }
+			&.social-link-twitter    { background-position: -150px    center; }
+			&.social-link-tumblr     { background-position: -120px  center; }
+			&.social-link-github     { background-position: -30px  center; }
+			&.social-link-instagram  { background-position: -60px  center; }
+			&.social-link-dribbble   { background-position: 0px center; }
+			&.social-link-soundcloud { background-position: -90px center; }
 
 			&:hover {
 				color: $color-links
