@@ -2,20 +2,31 @@
 .social-list {
 	margin:     0 0 1em;
 	padding:    0;
-	text-align: center;
+	text-align: center
 }
 
 	.social-item {
 		display:     inline-block;
-		font-size:   0.8em;
-		line-height: 1;
+		line-height: 30px;
 		list-style:  none;
-		margin:      0 0.5em;
+		margin:      0 5px;
+		text-align:  left;
 	}
 
 		.social-link {
-			color: $color-grey-m;
-			text-decoration: none;
+			background:      url('/public/images/icons/social-links.svg');
+			background-size: auto 30px;
+			display:         block;
+			height:          30px;
+			text-indent:     -10000px;
+			width:           30px;
+
+			&.social-link-twitter    { background-position: 0px    center; }
+			&.social-link-tumblr     { background-position: -30px  center; }
+			&.social-link-github     { background-position: -60px  center; }
+			&.social-link-instagram  { background-position: -90px  center; }
+			&.social-link-dribbble   { background-position: -120px center; }
+			&.social-link-soundcloud { background-position: -150px center; }
 
 			&:hover {
 				color: $color-links

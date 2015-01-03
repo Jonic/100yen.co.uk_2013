@@ -27,8 +27,9 @@
 		<title>100yen. Website design and development for cool people by Jonic Linley.</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="p:domain_verify" content="3326370413a8d08eb9f47fb7a6302557">
 
+		<script src="//use.typekit.net/tgw1nyv.js" type="application/javascript"></script>
+		<script type="application/javascript">try{Typekit.load();}catch(e){}</script>
 		<script src="/public/vendor/html5shiv/dist/html5shiv.js" type="application/javascript"></script>
 
 		<link href="/public/styles/master.min.css" rel="stylesheet" type="text/css">
@@ -41,20 +42,20 @@
 
 	<body>
 		<header class="site-header" role="banner">
-			<h1>100yen</h1>
+			<h1 class="site-logo"><img alt="100yen" src="/public/images/100yen.svg"></h1>
 
 			<p>Website design and development by&nbsp;Jonic&nbsp;Linley.</p>
-			<p><strong>New website launching soon. <del>Maybe</del>.</strong></p>
+			<p>New site coming soon, I guess. Oh, who am I kidding.</p>
 		</header>
 
 		<footer class="site-footer" role="contentinfo">
 			<ul class="social-list">
-				<li class="social-item"><a href="http://twitter.com/Jonic"    class="social-link">Twitter</a></li>
-				<li class="social-item"><a href="http://tumblr.100yen.co.uk/" class="social-link">Tumblr</a></li>
-				<li class="social-item"><a href="http://github.com/Jonic"     class="social-link">Github</a></li>
-				<li class="social-item"><a href="http://instagram.com/Jonic"  class="social-link">Instagram</a></li>
-				<li class="social-item"><a href="http://dribbble.com/Jonic"   class="social-link">Dribbble</a></li>
-				<li class="social-item"><a href="http://soundcloud.com/jonic" class="social-link">SoundCloud</a></li>
+				<li class="social-item"><a href="http://twitter.com/Jonic"    class="social-link social-link-twitter">Twitter</a></li>
+				<li class="social-item"><a href="http://tumblr.100yen.co.uk/" class="social-link social-link-tumblr">Tumblr</a></li>
+				<li class="social-item"><a href="http://github.com/Jonic"     class="social-link social-link-github">Github</a></li>
+				<li class="social-item"><a href="http://instagram.com/Jonic"  class="social-link social-link-instagram">Instagram</a></li>
+				<li class="social-item"><a href="http://dribbble.com/Jonic"   class="social-link social-link-dribbble">Dribbble</a></li>
+				<li class="social-item"><a href="http://soundcloud.com/jonic" class="social-link social-link-soundcloud">SoundCloud</a></li>
 			</ul>
 		</footer>
 
@@ -65,7 +66,7 @@
 		<script type="text/javascript">
 			var _gauges = _gauges || [];
 
-			(function() {
+			(function () {
 				var t   = document.createElement('script');
 				t.type  = 'text/javascript';
 				t.async = true;
@@ -74,7 +75,7 @@
 				t.src = '//secure.gaug.es/track.js';
 				var s = document.getElementsByTagName('script')[0];
 				s.parentNode.insertBefore(t, s);
-			})();
+			}());
 		</script>
 	</body>
 </html>
